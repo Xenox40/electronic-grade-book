@@ -76,3 +76,43 @@ SELECT @g AS 'Avg';
 DECLARE @g float
 EXEC studentPressencePercent @studentID = 1, @subjectID = 1, @semester = 1, @percent = @g OUTPUT;
 SELECT @g AS 'Avg';
+
+INSERT INTO Timetable
+VALUES (1, '7:00', '7:45'),
+(2, '7:55', '8:40'),
+(3, '8:50', '9:35'),
+(4, '9:45', '10:30'),
+(5, '10:40', '11:25'),
+(6, '11:45', '12:30'),
+(7, '12:45', '13:30'),
+(8, '13:45', '14:30')
+
+INSERT INTO Rooms
+VALUES (103, 1, 20),
+(205, 2, 20)
+
+INSERT INTO Schedule
+VALUES (2, 'Mon', 7, 103),
+(2, 'Tue', 8, 103),
+(2, 'Wen', 2, 205),
+(2, 'Wen', 3, 205),
+(2, 'Fri', 5, 103),
+(2, 'Fri', 6, 103)
+
+INSERT INTO Presences
+VALUES (1, 1, '2022-02-01', 'O', 7),
+(1, 2, '2022-02-02', 'O', 7),
+(1, 3, '2022-02-03', 'O', 7),
+(1, 4, '2022-02-03', 'O', 7),
+(1, 5, '2022-02-05', 'O', 7),
+(1, 6, '2022-02-05', 'O', 7),
+(1, 1, '2022-02-08', 'O', 7),
+(1, 2, '2022-02-09', 'O', 7),
+(1, 3, '2022-02-10', 'N', 7),
+(1, 4, '2022-02-10', 'N', 7),
+(1, 5, '2022-02-12', 'N', 7),
+(1, 6, '2022-02-12', 'N', 7)
+
+DECLARE @g float
+EXEC studentPressencePercent @studentID = 1, @subjectID = 2, @Semester = 1, @percent = @g OUTPUT;
+SELECT @g AS 'Avg';
