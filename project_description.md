@@ -554,7 +554,7 @@ NS liczymy jako obeconość, Z wgl nie jest wliczane
 			SELECT P.Type, COUNT(*) FROM Presences P
 			JOIN Schedule S ON S.ID = P.ScheduleID
 			JOIN [Subject groups] G ON G.ID = S.GroupID
-			WHERE @studentID = P.StudentID AND @subjectID = G.SubjectID
+			WHERE @studentID = P.StudentID AND @subjectID = G.SubjectID AND G.Semester = @Semester - 1
 			GROUP BY P.Type
 		)
 		SELECT @percent = ROUND(CAST(100.0 AS float) * (SELECT CAST(SUM(Counter) AS float) FROM studentPresenceCTE WHERE Type in ('O', 'NS')) /
