@@ -238,7 +238,7 @@ Przechowuje informacje kiedy zajęcia danej grupy odbywają się w ciągu tygodn
 Przechowuje informacje o obecności każdego ucznia na każdych przypisanych do niego zajęć, takie jak data, typ nieobecności oraz użytkownik który ostatni zmodyfikował typ nieobecności.
 	```sql
 	CREATE TABLE Presences(
-		ID int PRIMARY KEY,
+		ID int IDENTITY(1,1) PRIMARY KEY,
 		StudentID int FOREIGN KEY REFERENCES Users(ID) ON DELETE CASCADE,
 		ScheduleID int FOREIGN KEY REFERENCES Schedule(ID) ON DELETE CASCADE,
 		Date DATE NOT NULL,
